@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="dev.tsnanh.englishvocabularyquizgame.ui.welcome.WelcomeViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.welcome.WelcomeFragment">
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/settings_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/text_settings"
+            android:textAlignment="center"
+            app:icon="@drawable/ic_settings_black_24dp"
+            app:layout_constraintBottom_toTopOf="@+id/exit_button"
+            app:layout_constraintEnd_toEndOf="@+id/exit_button"
+            app:layout_constraintStart_toStartOf="@+id/exit_button"
+            app:layout_constraintTop_toBottomOf="@+id/high_score_button" />
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/play_now_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:onClick="@{ () -> viewModel.onNavigateToPlayFragment() }"
+            android:text="@string/text_play"
+            android:textAlignment="center"
+            app:icon="@drawable/ic_play_arrow_black_24dp"
+            app:layout_constraintBottom_toTopOf="@+id/high_score_button"
+            app:layout_constraintEnd_toEndOf="@+id/high_score_button"
+            app:layout_constraintStart_toStartOf="@+id/high_score_button"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/high_score_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/text_high_score"
+            android:textAlignment="center"
+            android:onClick="@{ () -> viewModel.onNavigateToHighScore() }"
+            app:icon="@drawable/ic_stars_black_24dp"
+            app:layout_constraintBottom_toTopOf="@+id/settings_button"
+            app:layout_constraintEnd_toEndOf="@+id/settings_button"
+            app:layout_constraintStart_toStartOf="@+id/settings_button"
+            app:layout_constraintTop_toBottomOf="@+id/play_now_button" />
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/exit_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/text_exit"
+            android:textAlignment="center"
+            app:icon="@drawable/ic_exit_to_app_black_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/settings_button" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

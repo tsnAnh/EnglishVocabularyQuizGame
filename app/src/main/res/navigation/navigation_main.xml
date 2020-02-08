@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_main"
+    app:startDestination="@+id/navigation_welcome">
+
+    <fragment
+        android:id="@+id/navigation_welcome"
+        android:name="dev.tsnanh.englishvocabularyquizgame.ui.welcome.WelcomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_welcome" >
+        <action
+            android:id="@+id/action_navigation_welcome_to_navigation_high_score"
+            app:destination="@id/navigation_high_score"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_navigation_welcome_to_navigation_play"
+            app:destination="@id/navigation_play"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@+id/navigation_welcome" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_about"
+        android:name="dev.tsnanh.englishvocabularyquizgame.ui.about.AboutFragment"
+        android:label="@string/text_about"
+        tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/navigation_instruction"
+        android:name="dev.tsnanh.englishvocabularyquizgame.ui.instruction.InstructionFragment"
+        android:label="@string/text_instruction"
+        tools:layout="@layout/fragment_instruction" />
+    <fragment
+        android:id="@+id/navigation_high_score"
+        android:name="dev.tsnanh.englishvocabularyquizgame.ui.high_score.HighScoreFragment"
+        android:label="High Score"
+        tools:layout="@layout/fragment_high_score" />
+    <fragment
+        android:id="@+id/navigation_play"
+        android:name="dev.tsnanh.englishvocabularyquizgame.ui.play.PlayFragment"
+        android:label="@string/text_play"
+        tools:layout="@layout/fragment_play">
+        <action
+            android:id="@+id/action_navigation_play_to_navigation_result"
+            app:destination="@id/navigation_result"
+            app:popUpTo="@+id/navigation_welcome" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_result"
+        android:name="dev.tsnanh.englishvocabularyquizgame.ui.result.ResultFragment"
+        android:label="Your Result"
+        tools:layout="@layout/fragment_result" >
+        <argument
+            android:name="playHistory"
+            app:argType="dev.tsnanh.englishvocabularyquizgame.database.PlayHistory" />
+        <action
+            android:id="@+id/action_navigation_result_to_navigation_play"
+            app:destination="@id/navigation_play" />
+    </fragment>
+</navigation>
