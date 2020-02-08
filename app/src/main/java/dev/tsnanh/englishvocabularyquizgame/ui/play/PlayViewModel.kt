@@ -38,7 +38,6 @@ class PlayViewModel(
 
             override fun onTick(millisUntilFinished: Long) {
                 _timeLeft.value = millisUntilFinished
-                Log.d("PlayViewModel", "$millisUntilFinished")
             }
         }
         viewModelScope.launch {

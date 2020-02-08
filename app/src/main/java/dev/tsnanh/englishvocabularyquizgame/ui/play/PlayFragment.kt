@@ -42,7 +42,7 @@ class PlayFragment : Fragment() {
 
         playViewModel.currentAnswer.observe(viewLifecycleOwner, Observer {
             it?.let {
-                binding.currentAnswer = it
+                binding.currentAnswer = "\"$it\"?"
             }
         })
 
