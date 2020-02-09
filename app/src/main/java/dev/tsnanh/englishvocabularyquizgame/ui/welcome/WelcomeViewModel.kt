@@ -14,6 +14,30 @@ class WelcomeViewModel : ViewModel() {
     val navigateToHighScore: LiveData<Boolean>
         get() = _navigateToHighScore
 
+    private val _navigateToSettings = MutableLiveData<Boolean>()
+    val navigateToSettings: LiveData<Boolean>
+        get() = _navigateToSettings
+
+    private val _exitApp = MutableLiveData<Boolean>()
+    val exitApp: LiveData<Boolean>
+        get() = _exitApp
+
+    fun onExit() {
+        _exitApp.value = true
+    }
+
+    fun onExited() {
+        _exitApp.value = null
+    }
+
+    fun onNavigateToSettings() {
+        _navigateToSettings.value = true
+    }
+
+    fun onNavigatedToSettings() {
+        _navigateToSettings.value = null
+    }
+
     fun onNavigateToHighScore() {
         _navigateToHighScore.value = true
     }

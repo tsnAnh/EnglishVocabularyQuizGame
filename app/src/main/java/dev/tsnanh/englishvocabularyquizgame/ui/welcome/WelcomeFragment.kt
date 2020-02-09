@@ -1,15 +1,14 @@
 package dev.tsnanh.englishvocabularyquizgame.ui.welcome
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-
 import dev.tsnanh.englishvocabularyquizgame.R
 import dev.tsnanh.englishvocabularyquizgame.databinding.FragmentWelcomeBinding
 
@@ -36,8 +35,9 @@ class WelcomeFragment : Fragment() {
 
         viewModel.navigateToPlay.observe(viewLifecycleOwner, Observer {
             it?.let {
-                findNavController().navigate(WelcomeFragmentDirections
-                    .actionNavigationWelcomeToNavigationPlay())
+                findNavController().navigate(
+                    WelcomeFragmentDirections.actionNavigationWelcomeToNavigationPlay()
+                )
                 viewModel.onNavigatedToPlayFragment()
             }
         })
@@ -48,6 +48,22 @@ class WelcomeFragment : Fragment() {
                     WelcomeFragmentDirections.actionNavigationWelcomeToNavigationHighScore()
                 )
                 viewModel.onNavigatedToHighScore()
+            }
+        })
+
+        viewModel.navigateToSettings.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                findNavController().navigate(
+                    WelcomeFragmentDirections.actionNavigationWelcomeToNavigationSettings()
+                )
+                viewModel.onNavigatedToSettings()
+            }
+        })
+
+        viewModel.exitApp.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                activity?.finish()
+                viewModel.onExited()
             }
         })
     }

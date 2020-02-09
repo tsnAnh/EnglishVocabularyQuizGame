@@ -66,13 +66,6 @@ class ResultFragment : Fragment() {
             }
         })
 
-        viewModel.onUserExit.observe(viewLifecycleOwner, Observer {
-            it?.let {
-                activity?.finish()
-                viewModel.onExitClicked()
-            }
-        })
-
         viewModel.onUserShare.observe(viewLifecycleOwner, Observer {
             it?.let {
                 onShareEvent(it)

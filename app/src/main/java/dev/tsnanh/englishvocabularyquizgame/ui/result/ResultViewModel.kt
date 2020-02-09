@@ -23,10 +23,6 @@ class ResultViewModel(
     val onUserReturnHome: LiveData<Boolean>
         get() = _onUserReturnHome
 
-    private val _onUserExit = MutableLiveData<Boolean>()
-    val onUserExit: LiveData<Boolean>
-        get() = _onUserExit
-
     private val _onUserShare = MutableLiveData<Int>()
     val onUserShare: LiveData<Int>
         get() = _onUserShare
@@ -49,14 +45,6 @@ class ResultViewModel(
 
     fun onHomeClicked() {
         _onUserReturnHome.value = null
-    }
-
-    fun onExitClick() {
-        _onUserExit.value = true
-    }
-
-    fun onExitClicked() {
-        _onUserExit.value = null
     }
 
     fun onShareClick() {

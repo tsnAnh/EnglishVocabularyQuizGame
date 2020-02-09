@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:key="@string/shared_preferences_key">
+
+    <PreferenceCategory android:title="@string/difficulty">
+        <ListPreference
+            android:defaultValue="1999"
+            android:dialogIcon="@drawable/ic_equalizer_black_24dp"
+            android:entries="@array/difficulty_entries"
+            android:entryValues="@array/difficulty_values"
+            android:icon="@drawable/ic_equalizer_black_24dp"
+            android:key="@string/difficulty_key"
+            android:summary="Change game difficulty."
+            android:title="Difficulty" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Display">
+
+        <EditTextPreference
+            android:defaultValue="Hihi"
+            android:dialogIcon="@drawable/ic_face_black_24dp"
+            android:icon="@drawable/ic_face_black_24dp"
+            android:key="@string/player_name_key"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:summary="Change your display name."
+            android:title="Player Name" />
+        <ListPreference
+            android:defaultValue="system"
+            android:dialogIcon="@drawable/ic_brightness_6_black_24dp"
+            android:entries="@array/ui_mode_entries"
+            android:entryValues="@array/ui_mode_values"
+            android:icon="@drawable/ic_brightness_6_black_24dp"
+            android:key="@string/ui_settings_key"
+            android:summary="Change app theme."
+            android:title="UI Settings" />
+    </PreferenceCategory>
+</PreferenceScreen>

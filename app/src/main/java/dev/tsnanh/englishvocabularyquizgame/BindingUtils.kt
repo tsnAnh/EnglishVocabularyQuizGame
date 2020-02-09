@@ -74,6 +74,15 @@ fun MaterialTextView.setTimeText(playHistory: PlayHistory?) {
 @BindingAdapter("imageScoreRating")
 fun ImageView.setImageRating(playHistory: PlayHistory?) {
     playHistory?.let {
-        setImageResource(playHistory.scoreRating)
+        setImageResource(
+            when (playHistory.scoreRating) {
+                0 -> R.drawable.ic_sentiment_very_dissatisfied_black_24dp
+                1 -> R.drawable.ic_sentiment_dissatisfied_black_24dp
+                2 -> R.drawable.ic_sentiment_neutral_black_24dp
+                3 -> R.drawable.ic_sentiment_satisfied_black_24dp
+                4 -> R.drawable.ic_sentiment_very_satisfied_black_24dp
+                else -> R.drawable.ic_sentiment_neutral_black_24dp
+            }
+        )
     }
 }

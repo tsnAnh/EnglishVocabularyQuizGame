@@ -25,6 +25,9 @@
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@+id/navigation_welcome" />
+        <action
+            android:id="@+id/action_navigation_welcome_to_navigation_settings"
+            app:destination="@id/navigation_settings" />
     </fragment>
     <fragment
         android:id="@+id/navigation_about"
@@ -63,4 +66,8 @@
             android:id="@+id/action_navigation_result_to_navigation_play"
             app:destination="@id/navigation_play" />
     </fragment>
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="dev.tsnanh.englishvocabularyquizgame.ui.settings.SettingsFragment"
+        android:label="Settings" />
 </navigation>

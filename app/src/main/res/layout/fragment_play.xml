@@ -4,139 +4,148 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="dev.tsnanh.englishvocabularyquizgame.ui.play.PlayViewModel" />
+
         <variable
             name="currentAnswer"
             type="String" />
+
         <variable
             name="currentVocabulary"
             type="dev.tsnanh.englishvocabularyquizgame.database.Vocabulary" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.play.PlayFragment">
+        android:fillViewport="true">
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/materialCardView"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            app:cardCornerRadius="24dp"
-            app:cardElevation="4dp"
-            app:cardMaxElevation="4dp"
-            app:layout_constraintBottom_toTopOf="@+id/textView2"
-            app:layout_constraintEnd_toEndOf="@+id/textView2"
-            app:layout_constraintStart_toStartOf="@+id/textView2"
-            app:layout_constraintTop_toBottomOf="@+id/vocabulary">
+            tools:context=".ui.play.PlayFragment">
 
-            <ImageView
-                android:id="@+id/image_vocabulary"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardView"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/image_height"
-                android:contentDescription="@string/text_quiz_image_content_description"
-                android:scaleType="centerCrop"
-                app:image="@{currentVocabulary}"
-                app:viewModel="@{viewModel}"
-                tools:src="@tools:sample/backgrounds/scenic" />
-        </com.google.android.material.card.MaterialCardView>
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="4dp"
+                app:cardMaxElevation="4dp"
+                app:layout_constraintBottom_toTopOf="@+id/textView2"
+                app:layout_constraintEnd_toEndOf="@+id/textView2"
+                app:layout_constraintStart_toStartOf="@+id/textView2"
+                app:layout_constraintTop_toBottomOf="@+id/vocabulary">
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/vocabulary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:fontFamily="@font/quicksand_bold"
-            android:text="@{currentAnswer}"
-            android:textAlignment="center"
-            android:textColor="?android:attr/textColorPrimary"
-            android:textSize="@dimen/text_vocabulary"
-            app:layout_constraintBottom_toTopOf="@+id/materialCardView"
-            app:layout_constraintEnd_toEndOf="@+id/materialCardView"
-            app:layout_constraintStart_toStartOf="@+id/materialCardView"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Vocabulary" />
+                <ImageView
+                    android:id="@+id/image_vocabulary"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/image_height"
+                    android:contentDescription="@string/text_quiz_image_content_description"
+                    android:scaleType="centerCrop"
+                    app:image="@{currentVocabulary}"
+                    app:viewModel="@{viewModel}"
+                    tools:src="@tools:sample/backgrounds/scenic" />
+            </com.google.android.material.card.MaterialCardView>
 
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-            android:id="@+id/correct_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:backgroundTint="#66BB6A"
-            android:fontFamily="@font/quicksand_bold"
-            android:onClick="@{() -> viewModel.onCorrectClick()}"
-            android:text="@string/text_correct"
-            android:textStyle="bold"
-            app:icon="@drawable/ic_check_black_24dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/vocabulary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/quicksand_bold"
+                android:text="@{currentAnswer}"
+                android:textAlignment="center"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="@dimen/text_vocabulary"
+                app:layout_constraintBottom_toTopOf="@+id/materialCardView"
+                app:layout_constraintEnd_toEndOf="@+id/materialCardView"
+                app:layout_constraintStart_toStartOf="@+id/materialCardView"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Vocabulary" />
 
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-            android:id="@+id/wrong_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="16dp"
-            android:backgroundTint="#EF5350"
-            android:fontFamily="@font/quicksand_bold"
-            android:onClick="@{() -> viewModel.onWrongClick()}"
-            android:text="@string/text_wrong"
-            app:icon="@drawable/ic_close_black_24dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/correct_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="#66BB6A"
+                android:fontFamily="@font/quicksand_bold"
+                android:onClick="@{() -> viewModel.onCorrectClick()}"
+                android:text="@string/text_correct"
+                android:textStyle="bold"
+                app:icon="@drawable/ic_check_black_24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="@font/quicksand_bold"
-            android:text="@string/text_is_the_word_correct"
-            android:textColor="?android:attr/textColorPrimary"
-            android:textSize="@dimen/is_correct_text_size"
-            app:layout_constraintBottom_toTopOf="@+id/time_left"
-            app:layout_constraintEnd_toEndOf="@+id/time_left"
-            app:layout_constraintStart_toStartOf="@+id/time_left"
-            app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/wrong_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="#EF5350"
+                android:fontFamily="@font/quicksand_bold"
+                android:onClick="@{() -> viewModel.onWrongClick()}"
+                android:text="@string/text_wrong"
+                app:icon="@drawable/ic_close_black_24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/score"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp"
-            android:fontFamily="@font/quicksand_light"
-            android:text="@null"
-            android:textAlignment="center"
-            android:textSize="@dimen/score_text_size"
-            android:textColor="?android:attr/textColorPrimary"
-            app:layout_constraintBottom_toTopOf="@+id/correct_button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/time_left"
-            tools:text="Your Score: 0" />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/quicksand_bold"
+                android:text="@string/text_is_the_word_correct"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="@dimen/is_correct_text_size"
+                app:layout_constraintBottom_toTopOf="@+id/time_left"
+                app:layout_constraintEnd_toEndOf="@+id/time_left"
+                app:layout_constraintStart_toStartOf="@+id/time_left"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
 
-        <TextView
-            android:id="@+id/time_left"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="@font/quicksand_bold"
-            android:textColor="?android:attr/textColorPrimary"
-            android:textSize="@dimen/time_left_text_size"
-            app:layout_constraintBottom_toTopOf="@+id/score"
-            app:layout_constraintEnd_toEndOf="@+id/score"
-            app:layout_constraintStart_toStartOf="@+id/score"
-            app:layout_constraintTop_toBottomOf="@+id/textView2"
-            tools:text="4" />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/quicksand_light"
+                android:text="@null"
+                android:textAlignment="center"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="@dimen/score_text_size"
+                app:layout_constraintBottom_toTopOf="@+id/correct_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/time_left"
+                tools:text="Your Score: 0" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/time_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/quicksand_bold"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="@dimen/time_left_text_size"
+                app:layout_constraintBottom_toTopOf="@+id/score"
+                app:layout_constraintEnd_toEndOf="@+id/score"
+                app:layout_constraintStart_toStartOf="@+id/score"
+                app:layout_constraintTop_toBottomOf="@+id/textView2"
+                tools:text="4" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

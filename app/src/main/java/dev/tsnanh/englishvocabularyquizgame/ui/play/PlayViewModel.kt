@@ -1,12 +1,11 @@
 package dev.tsnanh.englishvocabularyquizgame.ui.play
 
 import android.app.Application
-import android.content.Context
 import android.content.SharedPreferences
 import android.os.CountDownTimer
-import android.util.Log
 import androidx.arch.core.util.Function
 import androidx.lifecycle.*
+import androidx.preference.PreferenceManager
 import com.bumptech.glide.Glide
 import dev.tsnanh.englishvocabularyquizgame.R
 import dev.tsnanh.englishvocabularyquizgame.database.PlayHistory
@@ -15,6 +14,7 @@ import dev.tsnanh.englishvocabularyquizgame.database.VocabularyDAO
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -23,14 +23,22 @@ class PlayViewModel(
     application: Application
 ) : AndroidViewModel(application) {
     private lateinit var countDownTimer: CountDownTimer
-    private lateinit var sharedPref: SharedPreferences
+    private var sharedPref: SharedPreferences
 
     private val random = Random()
     private val context = (getApplication() as Application).applicationContext
     private var vocabularies: ArrayList<Vocabulary> = ArrayList()
+    private val duration: Long
+    private val format = SimpleDateFormat("EEE MMM dd HH:mm:ss yyyy", Locale.getDefault())
 
     init {
-        countDownTimer = object: CountDownTimer(1999L, 1000L) {
+        sharedPref = PreferenceManager.getDefaultSharedPreferences(context)
+
+        duration = sharedPref.getString(
+            context.getString(R.string.difficulty_key), "1999"
+        )!!.toLong()
+
+        countDownTimer = object : CountDownTimer(duration, 1000L) {
             override fun onFinish() {
                 _onGameFinished.value = recordNewPlayHistory()
                 countDownTimer.cancel()
@@ -52,10 +60,6 @@ class PlayViewModel(
 //            startTimer()
             preloadImage(vocabularies[_numberCorrect.value!! + 1])
         }
-//        sharedPref = context.getSharedPreferences(
-//            context.getString(R.string.shared_preferences_key),
-//            Context.MODE_PRIVATE
-//        )
     }
 
     private suspend fun getVocabularies(): ArrayList<Vocabulary> {
@@ -111,9 +115,11 @@ class PlayViewModel(
         val playHistory = PlayHistory(
             null,
             _numberCorrect.value!!,
-            Date().toString(),
-            0,
-            "CC NE",
+            format.format(Date()),
+            getDifficultyLevel(),
+            sharedPref.getString(
+                context.getString(R.string.player_name_key), "Hihi"
+            )!!,
             getScoreRating(_numberCorrect.value!!)
         )
         viewModelScope.launch {
@@ -124,22 +130,30 @@ class PlayViewModel(
         return playHistory
     }
 
+    private fun getDifficultyLevel(): Int {
+        return when (duration) {
+            2999L -> 0
+            1999L -> 1
+            else -> 2
+        }
+    }
+
     private fun getScoreRating(value: Int): Int {
         return when {
             value <= 10 -> {
-                R.drawable.ic_sentiment_very_dissatisfied_black_24dp
+                0
             }
             value in 10..20 -> {
-                R.drawable.ic_sentiment_dissatisfied_black_24dp
+                1
             }
             value in 20..30 -> {
-                R.drawable.ic_sentiment_neutral_black_24dp
+                2
             }
             value in 30..40 -> {
-                R.drawable.ic_sentiment_satisfied_black_24dp
+                3
             }
             else -> {
-                R.drawable.ic_sentiment_very_satisfied_black_24dp
+                4
             }
         }
     }

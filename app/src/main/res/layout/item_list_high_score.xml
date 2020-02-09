@@ -54,12 +54,14 @@
 
             <TextView
                 android:id="@+id/time_played"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="16dp"
+                android:ellipsize="end"
                 android:fontFamily="@font/quicksand_light"
-                android:text="@{ playHistory.timeEnd }"
+                android:maxLines="1"
+                android:text="@{ @string/item_high_score_description(playHistory.playerName, playHistory.timeEnd) }"
                 android:textAlignment="center"
                 android:textColor="?android:attr/textColorSecondary"
                 app:layout_constraintBottom_toBottomOf="@+id/score_rate"
