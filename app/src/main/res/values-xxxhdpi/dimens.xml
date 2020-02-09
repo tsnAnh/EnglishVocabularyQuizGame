@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="image_height">280dp</dimen>
-    <dimen name="text_vocabulary">45sp</dimen>
     <dimen name="is_correct_text_size">24sp</dimen>
     <dimen name="score_text_size">36sp</dimen>
     <dimen name="time_left_text_size">24sp</dimen>
