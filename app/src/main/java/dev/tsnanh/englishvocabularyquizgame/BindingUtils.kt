@@ -12,6 +12,7 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.google.android.material.textview.MaterialTextView
+import dev.tsnanh.englishvocabularyquizgame.database.Category
 import dev.tsnanh.englishvocabularyquizgame.database.PlayHistory
 import dev.tsnanh.englishvocabularyquizgame.database.Vocabulary
 import dev.tsnanh.englishvocabularyquizgame.ui.play.PlayViewModel
@@ -84,5 +85,27 @@ fun ImageView.setImageRating(playHistory: PlayHistory?) {
                 else -> R.drawable.ic_sentiment_neutral_black_24dp
             }
         )
+    }
+}
+
+@BindingAdapter("imageCategory")
+fun ImageView.setImageCategory(category: Category?) {
+    category?.let {
+        Glide
+            .with(this.context)
+            .load("http://ocodereducation.com/api/image/" + category.intro_img)
+            .placeholder(getPlaceholder(this.context))
+            .into(this)
+    }
+}
+
+@BindingAdapter("vocabularyImage")
+fun ImageView.setVocabularyImage(vocabulary: Vocabulary?) {
+    vocabulary?.let {
+        Glide
+            .with(this.context)
+            .load(this.context.getString(R.string.api_image_url) + it.image)
+            .placeholder(getPlaceholder(this.context))
+            .into(this)
     }
 }

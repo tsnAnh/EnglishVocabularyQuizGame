@@ -4,8 +4,14 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 
-@Database(entities = [Vocabulary::class, PlayHistory::class], version = 3, exportSchema = false)
+@Database(
+    entities = [Vocabulary::class, PlayHistory::class, Category::class, VocCat::class],
+    version = 4,
+    exportSchema = false
+)
 abstract class VocabularyQuizDatabase : RoomDatabase() {
 
     abstract val dao: VocabularyDAO
@@ -24,7 +30,12 @@ abstract class VocabularyQuizDatabase : RoomDatabase() {
                     context.applicationContext,
                     VocabularyQuizDatabase::class.java,
                     "picdic.db"
-                ).createFromAsset("database/picdic.db").build()
+                )
+                    .addMigrations(object : Migration(3, 4) {
+                        override fun migrate(database: SupportSQLiteDatabase) {
+
+                        }
+                    }).createFromAsset("database/picdic.db").build()
 
                 INSTANCE = instance
                 return instance

@@ -13,21 +13,28 @@
         <action
             android:id="@+id/action_navigation_welcome_to_navigation_high_score"
             app:destination="@id/navigation_high_score"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/pop_slide_in"
+            app:popExitAnim="@anim/pop_slide_out" />
         <action
             android:id="@+id/action_navigation_welcome_to_navigation_play"
             app:destination="@id/navigation_play"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/pop_slide_in"
+            app:popExitAnim="@anim/pop_slide_out"
             app:popUpTo="@+id/navigation_welcome" />
         <action
             android:id="@+id/action_navigation_welcome_to_navigation_settings"
-            app:destination="@id/navigation_settings" />
+            app:destination="@id/navigation_settings"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/pop_slide_in"
+            app:popExitAnim="@anim/pop_slide_out" />
+        <action
+            android:id="@+id/action_navigation_welcome_to_navigation_category"
+            app:destination="@id/navigation_category" />
     </fragment>
     <fragment
         android:id="@+id/navigation_about"
@@ -52,6 +59,10 @@
         <action
             android:id="@+id/action_navigation_play_to_navigation_result"
             app:destination="@id/navigation_result"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/pop_slide_in"
+            app:popExitAnim="@anim/pop_slide_out"
             app:popUpTo="@+id/navigation_welcome" />
     </fragment>
     <fragment
@@ -64,10 +75,36 @@
             app:argType="dev.tsnanh.englishvocabularyquizgame.database.PlayHistory" />
         <action
             android:id="@+id/action_navigation_result_to_navigation_play"
-            app:destination="@id/navigation_play" />
+            app:destination="@id/navigation_play"
+            app:enterAnim="@anim/pop_slide_in"
+            app:exitAnim="@anim/pop_slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out" />
     </fragment>
     <fragment
         android:id="@+id/navigation_settings"
         android:name="dev.tsnanh.englishvocabularyquizgame.ui.settings.SettingsFragment"
         android:label="Settings" />
+    <fragment
+        android:id="@+id/navigation_category"
+        android:name="dev.tsnanh.englishvocabularyquizgame.ui.category.CategoryFragment">
+        <action
+            android:id="@+id/action_navigation_category_to_navigation_list_vocabulary"
+            app:destination="@id/navigation_list_vocabulary"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/pop_slide_in"
+            app:popExitAnim="@anim/pop_slide_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_list_vocabulary"
+        android:name="dev.tsnanh.englishvocabularyquizgame.ui.list_vocabulary.ListVocabularyFragment">
+        <argument
+            android:name="vocabularyID"
+            app:argType="long" />
+        <argument
+            android:name="imageURI"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
 </navigation>

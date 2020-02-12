@@ -22,6 +22,18 @@ class WelcomeViewModel : ViewModel() {
     val exitApp: LiveData<Boolean>
         get() = _exitApp
 
+    private val _navigateToLearn = MutableLiveData<Boolean>()
+    val navigateToLearn: LiveData<Boolean>
+        get() = _navigateToLearn
+
+    fun onNavigateToLearn() {
+        _navigateToLearn.value = true
+    }
+
+    fun onNavigatedToLearn() {
+        _navigateToLearn.value = null
+    }
+
     fun onExit() {
         _exitApp.value = true
     }

@@ -32,4 +32,6 @@
     <string name="player_name_key">player_name</string>
     <string name="ui_settings_key">ui_settings</string>
     <string name="item_high_score_description">Player: <b>%s</b>. Time: %s</string>
+    <string name="date_format_pattern">EEE MMM dd HH:mm:ss yyyy</string>
+    <string name="text_learn_vocabulary">Learn Vocabulary</string>
 </resources>

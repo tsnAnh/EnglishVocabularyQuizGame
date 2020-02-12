@@ -29,7 +29,10 @@ class PlayViewModel(
     private val context = (getApplication() as Application).applicationContext
     private var vocabularies: ArrayList<Vocabulary> = ArrayList()
     private val duration: Long
-    private val format = SimpleDateFormat("EEE MMM dd HH:mm:ss yyyy", Locale.getDefault())
+    private val format = SimpleDateFormat(
+        context.getString(R.string.date_format_pattern),
+        Locale.getDefault()
+    )
 
     init {
         sharedPref = PreferenceManager.getDefaultSharedPreferences(context)

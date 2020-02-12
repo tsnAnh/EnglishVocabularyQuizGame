@@ -66,6 +66,15 @@ class WelcomeFragment : Fragment() {
                 viewModel.onExited()
             }
         })
+
+        viewModel.navigateToLearn.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                findNavController().navigate(
+                    WelcomeFragmentDirections.actionNavigationWelcomeToNavigationCategory()
+                )
+                viewModel.onNavigatedToLearn()
+            }
+        })
     }
 
 }

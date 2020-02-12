@@ -20,30 +20,29 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
+            android:onClick="@{ () -> viewModel.onNavigateToSettings() }"
             android:text="@string/text_settings"
             android:textAlignment="center"
-            android:onClick="@{ () -> viewModel.onNavigateToSettings() }"
             app:icon="@drawable/ic_settings_black_24dp"
             app:layout_constraintBottom_toTopOf="@+id/exit_button"
-            app:layout_constraintEnd_toEndOf="@+id/exit_button"
-            app:layout_constraintStart_toStartOf="@+id/exit_button"
+            app:layout_constraintEnd_toEndOf="@+id/high_score_button"
+            app:layout_constraintStart_toStartOf="@+id/high_score_button"
             app:layout_constraintTop_toBottomOf="@+id/high_score_button" />
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/play_now_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:onClick="@{ () -> viewModel.onNavigateToPlayFragment() }"
             android:text="@string/text_play"
             android:textAlignment="center"
             app:icon="@drawable/ic_play_arrow_black_24dp"
             app:layout_constraintBottom_toTopOf="@+id/high_score_button"
-            app:layout_constraintEnd_toEndOf="@+id/high_score_button"
-            app:layout_constraintStart_toStartOf="@+id/high_score_button"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
-            app:layout_constraintVertical_chainStyle="packed" />
+            app:layout_constraintEnd_toEndOf="@+id/learn_button"
+            app:layout_constraintStart_toStartOf="@+id/learn_button"
+            app:layout_constraintTop_toBottomOf="@+id/learn_button" />
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/high_score_button"
@@ -51,30 +50,47 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
+            android:onClick="@{ () -> viewModel.onNavigateToHighScore() }"
             android:text="@string/text_high_score"
             android:textAlignment="center"
-            android:onClick="@{ () -> viewModel.onNavigateToHighScore() }"
             app:icon="@drawable/ic_stars_black_24dp"
             app:layout_constraintBottom_toTopOf="@+id/settings_button"
-            app:layout_constraintEnd_toEndOf="@+id/settings_button"
-            app:layout_constraintStart_toStartOf="@+id/settings_button"
+            app:layout_constraintEnd_toEndOf="@+id/play_now_button"
+            app:layout_constraintStart_toStartOf="@+id/play_now_button"
             app:layout_constraintTop_toBottomOf="@+id/play_now_button" />
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/exit_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
+            android:onClick="@{ () -> viewModel.onExit() }"
             android:text="@string/text_exit"
             android:textAlignment="center"
-            android:onClick="@{ () -> viewModel.onExit() }"
             app:icon="@drawable/ic_exit_to_app_black_24dp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/settings_button"
+            app:layout_constraintStart_toStartOf="@+id/settings_button"
+            app:layout_constraintTop_toBottomOf="@+id/settings_button" />
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/learn_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:onClick="@{ () -> viewModel.onNavigateToLearn() }"
+            android:text="@string/text_learn_vocabulary"
+            android:textAlignment="center"
+            app:icon="@drawable/ic_book_black_24dp"
+            app:layout_constraintBottom_toTopOf="@+id/play_now_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/settings_button" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintVertical_chainStyle="packed" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

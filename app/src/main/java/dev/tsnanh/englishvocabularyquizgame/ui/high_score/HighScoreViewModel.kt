@@ -15,17 +15,15 @@ class HighScoreViewModel(
     private val dataSource: VocabularyDAO,
     application: Application
 ) : AndroidViewModel(application) {
-    private val playHistoryList: ArrayList<PlayHistory> = ArrayList()
 
-    private val _playHistoryLiveData = MutableLiveData<ArrayList<PlayHistory>>(playHistoryList)
+    private val _playHistoryLiveData = MutableLiveData<ArrayList<PlayHistory>>(ArrayList())
     val playHistoryLiveData: LiveData<ArrayList<PlayHistory>>
         get() = _playHistoryLiveData
 
     init {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                playHistoryList.clear()
-                playHistoryList.addAll(dataSource.getTopTenHighScore())
+                _playHistoryLiveData.postValue(ArrayList(dataSource.getTopTenHighScore()))
             }
         }
     }
